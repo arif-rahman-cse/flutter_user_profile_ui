@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'game_level.dart';
 
 void main() => runApp(MaterialApp(
       home: UserProfile(),
@@ -12,6 +13,18 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   int gameLevel = 0;
+  List<GameLevel> levelName = [
+    GameLevel(levelName:'Master', achievement:'100 coin'),
+    GameLevel(levelName:'Grand Master', achievement:'120 coin'),
+    GameLevel(levelName:'Arch Master', achievement:'150 coin'),
+    GameLevel(levelName:'Supreme Master', achievement:'180 coin'),
+    GameLevel(levelName:'Ultimate Master', achievement:'200 coin'),
+    GameLevel(levelName:'Master', achievement:'100 coin'),
+    GameLevel(levelName:'Grand Master', achievement:'120 coin'),
+    GameLevel(levelName:'Arch Master', achievement:'150 coin'),
+    GameLevel(levelName:'Supreme Master', achievement:'180 coin'),
+    GameLevel(levelName:'Ultimate Master', achievement:'200 coin'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +131,34 @@ class _UserProfileState extends State<UserProfile> {
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.0),
+            ),
+            SizedBox(
+              height: 16.0,
+            ),
+            Text(
+              'Completed Level',
+              style: TextStyle(
+                color: Colors.blueGrey,
+                letterSpacing: 2.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: levelName
+                  .map(
+                    (level) => Text('${level.levelName} - ${level.achievement}',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.0),
+                    ),
+                  )
+                  .toList(),
             ),
           ],
         ),
