@@ -5,7 +5,14 @@ void main() => runApp(MaterialApp(
       home: UserProfile(),
     ));
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
+  @override
+  _UserProfileState createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+  int gameLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +21,15 @@ class UserProfile extends StatelessWidget {
         title: Text('User Profile'),
         centerTitle: true,
         backgroundColor: Colors.cyan[800],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            gameLevel++;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blueGrey,
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(22.0, 32.0, 22.0, 0.0),
@@ -26,10 +42,19 @@ class UserProfile extends StatelessWidget {
                 radius: 40.0,
               ),
             ),
+            Divider(
+              height: 50.0,
+              thickness: 1.0,
+            ),
             Row(
               children: <Widget>[
-                Icon(Icons.person, color: Colors.blueGrey,),
-                SizedBox(width: 8.0,),
+                Icon(
+                  Icons.person,
+                  color: Colors.blueGrey,
+                ),
+                SizedBox(
+                  width: 8.0,
+                ),
                 Text(
                   'User Name',
                   style: TextStyle(
@@ -49,15 +74,18 @@ class UserProfile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.0),
             ),
-
-            Divider(
-              height: 20.0,
+            SizedBox(
+              height: 16.0,
             ),
-
             Row(
               children: <Widget>[
-                Icon(Icons.email, color: Colors.blueGrey,),
-                SizedBox(width: 8.0,),
+                Icon(
+                  Icons.email,
+                  color: Colors.blueGrey,
+                ),
+                SizedBox(
+                  width: 8.0,
+                ),
                 Text(
                   'User Email',
                   style: TextStyle(
@@ -69,6 +97,23 @@ class UserProfile extends StatelessWidget {
             ),
             Text(
               'smrahmanarif@gmail.com',
+              style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0),
+            ),
+            SizedBox(
+              height: 16.0,
+            ),
+            Text(
+              'Your Level',
+              style: TextStyle(
+                color: Colors.blueGrey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            Text(
+              '$gameLevel',
               style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
